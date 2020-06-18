@@ -26,7 +26,7 @@ function Forms (props){
           <div>{popUpError.first_name}</div>
           <div>{popUpError.email}</div>
           <div>{popUpError.password}</div>
-          <div>{popUpError.Tos}</div>
+        
         </div>
         
       
@@ -68,10 +68,10 @@ function Forms (props){
        
         <label> Terms of Service
           <input
-            name='Tos'
+            name='Terms'
             type="checkbox"
             onChange={onCheckboxChange}
-            checked={values.Terms.Tos}
+            checked={values.Terms.Terms}
           />
         </label>
         <button disabled={disabled}>submit</button>

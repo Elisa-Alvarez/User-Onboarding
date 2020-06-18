@@ -10,19 +10,21 @@ import './App.css';
 
 
 const userFormIntialValue = {
-    
+  id: uuid(),
   first_name: '',
   email: '',
   password: '',
   Terms: {                   
-    Tos: false
+    Terms: false
   },
 }
 
 const errors = {
+  
   first_name: '',
   email: '',
   password:'',
+  
   
 }
 
@@ -48,9 +50,9 @@ function App() {
   }
   
   const postNewUser = newUser =>{
-    axios.get('https://reqres.in/api/users', newUser)
+    axios.post('https://reqres.in/api/users', newUser)
     .then(res => {
-      setUser([...user, res.data.data])
+      setUser([...user, res.data])
       
     })
     .catch(err => {
@@ -64,6 +66,7 @@ function App() {
  
   const onInputChange = evt => {
    
+   
     const { name, value } = evt.target
     
     
@@ -75,7 +78,7 @@ function App() {
       .then(() => {
         setUserErrors({
           ...userFormError,
-          [name]: ""
+          [name]: value
         })
       })
       
@@ -95,29 +98,30 @@ function App() {
   
   const onCheckboxChange = evt => {
    
-    const { name, checked } = evt.target
+    const { name } = evt.target
    
     setUserForm({
       ...userFormValue,
-      Terms: {
-        ...userFormValue.Tos,
-        [name]: checked,
+    Terms:{
+        ...userFormValue.Terms,
+        [name]: true,}
         
-      }
+      
     })
   }
   const onSubmit = evt => {
     evt.preventDefault()
     
     const newUser = {
-      id:uuid(),
+      id: uuid(),
       first_name: userFormValue.first_name.trim(),
       email: userFormValue.email.trim(),
       password: userFormValue.password,
-      Terms: userFormValue.Tos === true
+      
+      
         
     }
-   
+    
     postNewUser(newUser)
   }
  
@@ -128,7 +132,8 @@ function App() {
 
   
   useEffect(() => {
-    formSchema.isValid(userFormValue).then(valid => {
+    formSchema.isValid(userFormValue)
+    .then(valid => {
       setDisabled(!valid);
     })
   }, [userFormValue])
@@ -153,7 +158,7 @@ function App() {
         console.log(user),
              user.map(users => {
                return (
-                <User key={users.id} userInfo={users} />
+                <User key={user.id} userInfo={users} />
               )
               })
             

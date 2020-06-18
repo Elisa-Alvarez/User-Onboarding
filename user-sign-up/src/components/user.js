@@ -4,7 +4,7 @@ function User({ userInfo }) {
   if (!userInfo) {
     return <h3>Loading your Info...</h3>
   }
-
+  
   return (
     <div >
       <img src={userInfo.avatar}/>
