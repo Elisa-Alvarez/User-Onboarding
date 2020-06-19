@@ -138,13 +138,13 @@ function App() {
   }, [userFormValue])
 
   return (
-    <div className='container'>
+    <div className='container' style={{ textAlign:'center'}}>
       <header>
         
         <h1>User Sign Up</h1>
       </header>
 
-      <Forms
+      <Forms 
         values={userFormValue}
         onInputChange={onInputChange}
         onCheckboxChange={onCheckboxChange}
@@ -152,7 +152,7 @@ function App() {
         disabled={disable}
         popUpError={errors}
       />
-
+    <div className="user-container" style={{ marginTop:'2rem',display:"flex", flexWrap:'wrap', justifyContent:'space-between'}}>
       {
         console.log(user),
              user.map(users => {
@@ -162,7 +162,7 @@ function App() {
               })
             
       }
-      
+     </div> 
     </div>
   )
 

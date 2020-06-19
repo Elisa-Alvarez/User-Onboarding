@@ -19,8 +19,8 @@ describe('Inputs and cancel button', () => {
   
   it('get email', ()=>{
     cy.get('input[name=email')
-    .type('email')
-    .should('have.value', 'email')
+    .type('email@gmail.com')
+    .should('have.value', 'email@gmail.com')
   })
   
    it('get passwrd',()=>{
@@ -28,9 +28,27 @@ describe('Inputs and cancel button', () => {
     .type('password')
     .should('have.value', 'password')
    })
- 
-   it ('get submit', ()=>{
-   cy.get('button').should('be.disabled')})
+
+   it('checkbox valid', ()=>{
+     cy.get('input[name=Terms]').check()
+    
+    .should('have.value','on')
+   })
+
+   it('submit info', () => { // individual test
+    // remote control operation
+    // (but also checks that the button exists, otherwise test fails)
+    cy.get('button').click()
+
+   
+  })
+
+  
+
+   
+
+
+
   })
   
  
