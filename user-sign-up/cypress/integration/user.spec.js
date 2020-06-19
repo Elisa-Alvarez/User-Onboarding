@@ -35,9 +35,8 @@ describe('Inputs and cancel button', () => {
     .should('have.value','on')
    })
 
-   it('submit info', () => { // individual test
-    // remote control operation
-    // (but also checks that the button exists, otherwise test fails)
+   it('submit info', () => { 
+   
     cy.get('button').click()
 
    
