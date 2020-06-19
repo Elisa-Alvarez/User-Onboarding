@@ -19,8 +19,8 @@ describe('Inputs and cancel button', () => {
   
   it('get email', ()=>{
     cy.get('input[name=email')
-    .type('email')
-    .should('have.value', 'email')
+    .type('email@gmail.com')
+    .should('have.value', 'email@gmail.com')
   })
   
    it('get passwrd',()=>{
@@ -28,8 +28,26 @@ describe('Inputs and cancel button', () => {
     .type('password')
     .should('have.value', 'password')
    })
+
+   it('checkbox valid', ()=>{
+     cy.get('input[name=Terms]').check()
+    
+    .should('have.value','on')
+   })
+
+   it('submit info', () => { 
+   
+    cy.get('button').click()
+
+   
+  })
+
   
- 
+
+   
+
+
+
   })
   
  
