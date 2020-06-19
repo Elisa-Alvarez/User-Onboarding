@@ -28,13 +28,13 @@ const errors = {
   
 }
 
-const disabledEvent = true
+
 
 function App() {
   const [user, setUser] = useState([])          
   const [userFormValue, setUserForm] = useState(userFormIntialValue) 
   const [userFormError, setUserErrors] = useState(errors) 
-  const [disable, setDisabled] = useState(disabledEvent) 
+  const [disable, setDisabled] = useState(true) 
   
   
   const getUser = () => {
@@ -69,7 +69,7 @@ function App() {
    
     const { name, value } = evt.target
     
-    
+  
     Yup
       .reach(formSchema, name)
    
@@ -78,7 +78,7 @@ function App() {
       .then(() => {
         setUserErrors({
           ...userFormError,
-          [name]: value
+          [name]: ''
         })
       })
       
@@ -98,16 +98,14 @@ function App() {
   
   const onCheckboxChange = evt => {
    
-    const { name } = evt.target
-   
-    setUserForm({
-      ...userFormValue,
-    Terms:{
-        ...userFormValue.Terms,
-        [name]: true,}
-        
+    const { name, checked } = evt.target
+
+      setUserForm({
+        ...userFormValue, 
+        [name]:checked,
+      })
       
-    })
+    
   }
   const onSubmit = evt => {
     evt.preventDefault()
@@ -128,6 +126,7 @@ function App() {
   
   useEffect(() => {
     getUser()
+    
   }, [])
 
   

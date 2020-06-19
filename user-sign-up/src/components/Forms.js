@@ -21,7 +21,7 @@ function Forms (props){
         <h4>User Information</h4>
 
         
-        <div>
+        <div className='popUpError'>
           
           <div>{popUpError.first_name}</div>
           <div>{popUpError.email}</div>

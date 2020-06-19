@@ -28,8 +28,9 @@ describe('Inputs and cancel button', () => {
     .type('password')
     .should('have.value', 'password')
    })
-  
  
+   it ('get submit', ()=>{
+   cy.get('button').should('be.disabled')})
   })
   
  
